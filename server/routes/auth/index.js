@@ -5,6 +5,6 @@ import ensureAuthenticated from '../../middlewares/authMiddleware'
 const router = express.Router()
 router.get('/serverStatus', serverStatus)
 router.post('/login', loginHandler)
-router.get('/logout', ensureAuthenticated, logoutHandler)
+router.post('/logout', ensureAuthenticated, logoutHandler)
 
 export default router
