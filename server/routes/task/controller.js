@@ -32,3 +32,30 @@ export const getAllTasks = (req, res) => {
       return res.status(200).send(docs)
     })
 }
+
+export const updateTask = (req, res) => {
+  Task.findOneAndUpdate(
+    {
+      isActive: true,
+      _id: req.params.id,
+      createdAt: req.body.userId
+    },
+    {
+      description: req.body.description,
+      dueDate: req.body.dueDate
+    },
+    {
+      new: true
+    },
+    (err, doc) => {
+      const updatedTask = {
+        _id: doc._id,
+        description: doc.description,
+        dueDate: doc.dueDate,
+      }
+      if (err) return res.boom.badImplementation('', { error: err })
+      if (!doc || !doc._id) return res.boom.notFound('Task not found')
+      return res.status(200).send({ message: 'Task updated', data: updatedTask })
+    }
+  )
+}
