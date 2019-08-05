@@ -1,0 +1,233 @@
+{
+	"info": {
+		"_postman_id": "285fe785-ac07-4588-9a58-d6c1166321df",
+		"name": "HCSchallenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/auth/serverStatus",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{API}}/api/auth/serverStatus",
+					"host": [
+						"{{API}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"serverStatus"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/auth/logout",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlc3RlYmFuIiwiaWF0IjoxNTY1MDIzMDY3LCJleHAiOjE1NjUxMDk0Njd9.sgEoQU4lQ9McLIe-yL26sbxGcycRERdyY6ZcahbBT7E",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{API}}/api/auth/logout",
+					"host": [
+						"{{API}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/auth/login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"esteban\",\n\t\"password\": \"123456\"\n}"
+				},
+				"url": {
+					"raw": "{{API}}/api/auth/login",
+					"host": [
+						"{{API}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/task",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"description\": \"test description\",\n\t\"dueDate\": \"10/10/2019\"\n}"
+				},
+				"url": {
+					"raw": "{{API}}/api/task",
+					"host": [
+						"{{API}}"
+					],
+					"path": [
+						"api",
+						"task"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/task/:id",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "authorization",
+						"type": "text",
+						"value": "{{token}}"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"description\": \"test description\",\n\t\"dueDate\": \"10/10/2019\"\n}"
+				},
+				"url": {
+					"raw": "{{API}}/api/task/5d485fc03d4fa6b7a70b0ef4",
+					"host": [
+						"{{API}}"
+					],
+					"path": [
+						"api",
+						"task",
+						"5d485fc03d4fa6b7a70b0ef4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/task/:id",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "authorization",
+						"type": "text",
+						"value": "{{token}}"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{API}}/api/task/5d485fc03d4fa6b7a70b0ef4",
+					"host": [
+						"{{API}}"
+					],
+					"path": [
+						"api",
+						"task",
+						"5d485fc03d4fa6b7a70b0ef4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/task",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"type": "text",
+						"value": "{{token}}"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{API}}/api/task",
+					"host": [
+						"{{API}}"
+					],
+					"path": [
+						"api",
+						"task"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
