@@ -24,3 +24,17 @@ export const loginHandler = (req, res) => {
     }
   )
 }
+
+export const logoutHandler = (req, res) => {
+  User.findOneAndUpdate(
+    { _id: req.body.userId },
+    { token: null },
+    (err, doc) => {
+      if (err) return res.boom.badImplementation('', { error: err })
+      if (doc) {
+        return res.status(200).send({ message: 'logout' })
+      }
+      return res.boom.unauthorized('username doesn`t exist')
+    }
+  )
+}
