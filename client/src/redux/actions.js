@@ -1,3 +1,6 @@
-export const testAction = () => ({
-  type: 'TEST',
+import { loginApi } from '../api'
+
+export const loginAction = (params) => ({
+  type: 'LOGIN',
+  payload: loginApi(params)
 })
