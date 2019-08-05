@@ -77,7 +77,7 @@ const validate = (values) => {
 
 const onSubmit = (values, dispatch, props) => {
   dispatch(loginAction(values))
-    .then(() => alert('loging success'))
+    .then(() => props.history.push('/home'))
 }
 
 export default reduxForm({
