@@ -59,3 +59,17 @@ export const updateTask = (req, res) => {
     }
   )
 }
+
+export const deleteTask = (req, res) => {
+  Task.findOneAndUpdate(
+    {
+      _id: req.params.id,
+      createdAt: req.body.userId
+    },
+    { isActive: false },
+    (err, doc) => {
+      if (err) return res.boom.badImplementation('', { error: err })
+      return res.status(200).send({ message: 'Task removed', data: { _id: req.params.id } })
+    }
+  )
+}
