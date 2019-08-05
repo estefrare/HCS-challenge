@@ -19,3 +19,16 @@ export const addTask = (req, res) => {
     return res.status(200).send({ message: 'Task created', data: newTask })
   })
 }
+
+export const getAllTasks = (req, res) => {
+  Task.find(
+    {
+      isActive: true,
+      createdAt: req.body.userId
+    },
+    (err, docs) => {
+      if (err) return res.boom.badImplementation('', { error: err })
+      if (!docs) return res.boom.notFound('Tasks not found')
+      return res.status(200).send(docs)
+    })
+}
