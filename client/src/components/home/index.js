@@ -5,7 +5,8 @@ import {
   selectTaskAction,
   addTaskAction,
   editTaskAction,
-  removeTaskAction
+  removeTaskAction,
+  logoutAction,
 } from '../../redux/actions'
 import { connect } from 'react-redux'
 import './styles.css'
@@ -122,13 +123,13 @@ export class Home extends Component {
   }
 
   render() {
-    const { username, selectedTask, handleSubmit } = this.props
+    const { username, selectedTask, handleSubmit, logout } = this.props
     const { isAdding, isEditing } = this.state
     return (
       <div className="home-container">
         <div className="home-header">
           <div className="home-user">USER: {username}</div>
-          <button className="home-button home-logout">Logout</button>
+          <button onClick={logout} className="home-button home-logout">Logout</button>
         </div>
         <div className="home-content">
           {this.renderTasks()}
@@ -192,7 +193,8 @@ const mapDispatchToProps = (dispatch) => ({
   selectTask: (id) => dispatch(selectTaskAction(id)),
   addTask: (task) => dispatch(addTaskAction(task)),
   editTask: (task) => dispatch(editTaskAction(task)),
-  removeTask: (id) => dispatch(removeTaskAction(id))
+  removeTask: (id) => dispatch(removeTaskAction(id)),
+  logout: () => dispatch(logoutAction()),
 })
 
 const HomeWithProps = connect(mapStateToProps, mapDispatchToProps)(Home)

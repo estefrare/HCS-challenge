@@ -17,6 +17,7 @@ const reducer = (state = initialState, action) => {
         isAdding: true,
       }
     case 'LOGIN_PENDING':
+    case 'LOGOUT_PENDING':
       return {
         ...state,
         isFetching: true,
@@ -62,6 +63,9 @@ const reducer = (state = initialState, action) => {
         isFetching: false,
         tasks: action.payload
       }
+    case 'LOGOUT_FULFILLED':
+      return initialState
+    case 'LOGOUT_REJECTED':
     case 'REMOVE_TASK_REJECTED':
     case 'EDIT_TASK_REJECTED':
     case 'ADD_TASK_REJECTED':

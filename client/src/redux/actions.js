@@ -3,7 +3,8 @@ import {
   getTasksApi,
   addTasksApi,
   editTasksApi,
-  removeTasksApi
+  removeTasksApi,
+  logoutApi
 } from '../api'
 
 export const loginAction = (params) => ({
@@ -34,4 +35,9 @@ export const editTaskAction = (task) => ({
 export const removeTaskAction = (id) => ({
   type: 'REMOVE_TASK',
   payload: removeTasksApi(id)
+})
+
+export const logoutAction = () => ({
+  type: 'LOGOUT',
+  payload: logoutApi()
 })
